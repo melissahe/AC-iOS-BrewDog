@@ -8,9 +8,14 @@
 
 import Foundation
 
+
+//completion handler needs to be @escaping because you're dealing with data, which be used to do stuff asynchronously (not in time with the function, so the closure might complete its processes AFTER the function returns; which is why "self." is needed in all closures passed in); by default, closures are @nonescaping, meaning your closure will complete before the function returns
+    //basically @escaping if closure completes after function returns
+        //OR if closure will be stored in a variable that was defined outside of the function
+    //@nonescaping if closure completes before function returns
 class APIManager {
-    func getData(endpoint: String, completionHandler: @escaping (Data?) -> () ) {
-        
+    func getData(endpoint: String, completionHandler: @escaping (Data?) -> () )
+    {
             guard let url = URL(string: endpoint) else {
                 return
             }

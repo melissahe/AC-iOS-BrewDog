@@ -14,6 +14,11 @@ class Beer {
     let abv: Double
     let beerDescription: String
     let imageUrlString: String
+    var sectionName: String {
+        let wholePercent = Int(abv)
+        
+        return "\(wholePercent).0% - \(wholePercent).9%"
+    }
     
     init(name: String, tagline: String, abv: Double, beerDescription: String, imageUrlString: String) {
         self.name = name
